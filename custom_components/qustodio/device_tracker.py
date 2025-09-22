@@ -4,10 +4,8 @@ DETAILS
 """
 import logging
 
-from homeassistant.components.device_tracker import (
-    DOMAIN as PLATFORM_DOMAIN,
-    SOURCE_TYPE_GPS,
-)
+from homeassistant.components.device_tracker import DOMAIN as PLATFORM_DOMAIN
+from homeassistant.components.device_tracker import SourceType
 from homeassistant.components.device_tracker.config_entry import TrackerEntity
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.helpers.typing import HomeAssistantType
@@ -113,7 +111,7 @@ class QustodioTrackerEntity(TrackerEntity):
     @property
     def source_type(self):
         """Return the source type, eg gps or router, of the device."""
-        return SOURCE_TYPE_GPS
+        return SourceType.GPS
 
     @property
     def should_poll(self):

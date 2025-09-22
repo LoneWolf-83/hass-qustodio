@@ -85,14 +85,7 @@ async def async_setup_entry(hass, config_entry):
     hass.data[DOMAIN_DATA]["client"] = QustodioData(hass, client)
 
     # Add sensor
-    hass.async_add_job(
-        hass.config_entries.async_forward_entry_setup(config_entry, "sensor")
-    )
-
-    # Add device tracker
-    hass.async_add_job(
-        hass.config_entries.async_forward_entry_setup(config_entry, "device_tracker")
-    )
+    await hass.config_entries.async_forward_entry_setups(config_entry, ["sensor", "device_tracker"])
 
     return True
 
